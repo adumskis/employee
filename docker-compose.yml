@@ -20,6 +20,7 @@ services:
       context: .
       target: dev
       dockerfile: .docker/php/Dockerfile
+    user: ${CURRENT_USER}
     volumes:
       - ./:/code
       - ~/.composer/cache:/.composer/cache

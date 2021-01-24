@@ -1,3 +1,5 @@
+export CURRENT_USER=$(shell id -u):$(shell id -g)
+
 up:
 	docker-compose up -d
 

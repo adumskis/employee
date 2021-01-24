@@ -1,0 +1,55 @@
+version: '3.7'
+
+services:
+  nginx:
+    build:
+      context: .
+      target: dev
+      dockerfile: .docker/nginx/Dockerfile
+    volumes:
+      - ./:/code
+    working_dir: /code
+    networks:
+      default:
+        aliases:
+          - 'employee.local'
+        ipv4_address: 172.26.154.2
+
+  php:
+    build:
+      context: .
+      target: dev
+      dockerfile: .docker/php/Dockerfile
+    volumes:
+      - ./:/code
+      - ~/.composer/cache:/.composer/cache
+      - ~/.config/psysh:/.config/psysh
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+
+  mariadb:
+    image: mariadb:10.5
+    ports:
+      - 8081:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=employee
+      - MYSQL_DATABASE=employee
+      - MYSQL_USER=employee
+      - MYSQL_PASSWORD=employee
+    volumes:
+      - mariadata:/var/lib/mysql
+
+  redis:
+    image: redis:6.0
+
+volumes:
+  mariadata:
+    driver: local
+
+networks:
+  default:
+    driver: bridge
+    name: employee
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16

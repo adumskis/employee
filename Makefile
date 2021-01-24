@@ -7,5 +7,8 @@ up_rebuild:
 down:
 	docker-compose down
 
+ssh:
+	docker-compose exec php bash
+
 compose_install:
 	docker-compose exec php composer install

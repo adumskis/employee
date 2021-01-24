@@ -23,7 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->date('birth_date');
             $table->date('employment_date');
             $table->string('home_address');
-            $table->bigInteger('boss_id')->unsigned();
+            $table->bigInteger('boss_id')->unsigned()->nullable();
             $table->enum('role', [
                 'ceo',
                 'project_manager',
@@ -33,7 +33,10 @@ class CreateEmployeesTable extends Migration
             ]);
             $table->timestamps();
 
-            $table->foreign('boss_id')->references('id')->on('employees');
+            $table->foreign('boss_id')
+                ->references('id')
+                ->on('employees')
+                ->onDelete('cascade');
         });
     }
 

@@ -8,6 +8,11 @@ use Bundles\EmployeeBundle\CustomValidations\EmploymentDateIsNotFutureValidation
 use Bundles\EmployeeBundle\CustomValidations\FirstNameDifferentThenLastNameValidation;
 use Bundles\EmployeeBundle\CustomValidations\OnlyOneCEOValidation;
 use Bundles\EmployeeBundle\CustomValidations\RoleNameValidationValidation;
+use Bundles\EmployeeBundle\Services\ListHandler\EmployeeListHandler;
+use Bundles\EmployeeBundle\Services\ListHandler\Filters\BirthDateFromFilter;
+use Bundles\EmployeeBundle\Services\ListHandler\Filters\BirthDateToFilter;
+use Bundles\EmployeeBundle\Services\ListHandler\Filters\BossFilter;
+use Bundles\EmployeeBundle\Services\ListHandler\Filters\FirstNameFilter;
 use Bundles\EmployeeBundle\Validators\EmployeeValidator;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application;
@@ -31,6 +36,13 @@ class EmployeeServiceProvider extends ServiceProvider
             $validator->addCustomValidation($this->app->make(FirstNameDifferentThenLastNameValidation::class));
             $validator->addCustomValidation($this->app->make(OnlyOneCEOValidation::class));
             $validator->addCustomValidation($this->app->make(RoleNameValidationValidation::class));
+        });
+
+        $this->app->resolving(EmployeeListHandler::class, function (EmployeeListHandler $handler) {
+            $handler->addFilter($this->app->make(BirthDateFromFilter::class));
+            $handler->addFilter($this->app->make(BirthDateToFilter::class));
+            $handler->addFilter($this->app->make(BossFilter::class));
+            $handler->addFilter($this->app->make(FirstNameFilter::class));
         });
 
         $this->registerRoutes();

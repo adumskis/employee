@@ -2,6 +2,7 @@
 
 namespace Bundles\EmployeeBundle\Controllers;
 
+use Bundles\EmployeeBundle\Services\ListHandler\EmployeeListHandler;
 use Bundles\EmployeeBundle\Validators\EmployeeValidator;
 use App\Resources\EmployeeResource;
 use Exception;
@@ -23,6 +24,11 @@ class EmployeesController extends Controller
     protected Employee $employeeQueryBuilder;
 
     /**
+     * @var EmployeeListHandler
+     */
+    protected EmployeeListHandler $employeeListHandler;
+
+    /**
      * @var EmployeeValidator
      */
     protected EmployeeValidator $employeeValidator;
@@ -30,23 +36,24 @@ class EmployeesController extends Controller
     /**
      * EmployeesController constructor.
      * @param Employee $employeeQueryBuilder
+     * @param EmployeeListHandler $employeeListHandler
      * @param EmployeeValidator $employeeValidator
      */
-    public function __construct(Employee $employeeQueryBuilder, EmployeeValidator $employeeValidator)
+    public function __construct(Employee $employeeQueryBuilder, EmployeeListHandler $employeeListHandler, EmployeeValidator $employeeValidator)
     {
         $this->employeeQueryBuilder = $employeeQueryBuilder;
+        $this->employeeListHandler = $employeeListHandler;
         $this->employeeValidator = $employeeValidator;
     }
 
     /**
+     * @param Request $request
      * @return JsonResource
+     * @throws ValidationException
      */
-    public function index(): JsonResource
+    public function index(Request $request): JsonResource
     {
-        $employees = $this->employeeQueryBuilder
-            ->newQuery()
-            ->with('boss')
-            ->paginate();
+        $employees = $this->employeeListHandler->getList($request->query);
 
         return EmployeeResource::collection($employees);
     }

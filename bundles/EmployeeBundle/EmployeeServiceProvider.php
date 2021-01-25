@@ -2,6 +2,7 @@
 
 namespace Bundles\EmployeeBundle;
 
+use Bundles\EmployeeBundle\CustomValidations\BossIdExistsValidation;
 use Bundles\EmployeeBundle\CustomValidations\CEODontHaveBoseValidation;
 use Bundles\EmployeeBundle\CustomValidations\EmployeeIsAdultValidation;
 use Bundles\EmployeeBundle\CustomValidations\EmploymentDateIsNotFutureValidation;
@@ -30,6 +31,7 @@ class EmployeeServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->resolving(EmployeeValidator::class, function (EmployeeValidator $validator) {
+            $validator->addCustomValidation($this->app->make(BossIdExistsValidation::class));
             $validator->addCustomValidation($this->app->make(CEODontHaveBoseValidation::class));
             $validator->addCustomValidation($this->app->make(EmployeeIsAdultValidation::class));
             $validator->addCustomValidation($this->app->make(EmploymentDateIsNotFutureValidation::class));

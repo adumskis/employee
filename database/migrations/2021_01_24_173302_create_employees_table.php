@@ -39,7 +39,7 @@ class CreateEmployeesTable extends Migration
             $table->foreign('boss_id')
                 ->references('id')
                 ->on('employees')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
 
         DB::statement('ALTER TABLE `employees` ADD FULLTEXT INDEX first_name_index (first_name)');

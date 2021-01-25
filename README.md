@@ -19,3 +19,4 @@ will need to update local `/etc/hosts` file with static Nginx container IP addre
 
 ### Other stuff:
 * To run phpunit test just use `make phpunit` command;
+* Added Postman collection to repository.

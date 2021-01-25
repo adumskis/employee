@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "e8209fe8-f0a7-40b6-94c5-9907e511215a",
+		"name": "Employee",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://employee.local/api/employees",
+					"protocol": "http",
+					"host": [
+						"employee",
+						"local"
+					],
+					"path": [
+						"api",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "boss_id",
+							"value": "1",
+							"disabled": true
+						},
+						{
+							"key": "birth_date_from",
+							"value": "2000-01-01",
+							"disabled": true
+						},
+						{
+							"key": "birth_date_to",
+							"value": "2020-01-01",
+							"disabled": true
+						},
+						{
+							"key": "first_name",
+							"value": "John",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"birth_date\": \"2003-01-25\",\n    \"employment_date\": \"2021-01-01\",\n    \"boss_id\": 1,\n    \"home_address\": \"Street st. 1, City\",\n    \"role\": \"developer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://employee.local/api/employees",
+					"protocol": "http",
+					"host": [
+						"employee",
+						"local"
+					],
+					"path": [
+						"api",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"birth_date\": \"1990-01-01\",\n    \"employment_date\": \"2020-01-01\",\n    \"boss_id\": 1,\n    \"home_address\": \"Street st. 1, City\",\n    \"role\": \"developer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://employee.local/api/employees/1",
+					"protocol": "http",
+					"host": [
+						"employee",
+						"local"
+					],
+					"path": [
+						"api",
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"John\",\n    \"last_name\": \"Smith\",\n    \"birth_date\": \"1990-01-01\",\n    \"employment_date\": \"2020-01-01\",\n    \"boss_id\": 1,\n    \"home_address\": \"Street st. 1, City\",\n    \"role\": \"ceo\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://employee.local/api/employees/1",
+					"protocol": "http",
+					"host": [
+						"employee",
+						"local"
+					],
+					"path": [
+						"api",
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

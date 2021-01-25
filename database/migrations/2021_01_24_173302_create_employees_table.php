@@ -18,11 +18,11 @@ class CreateEmployeesTable extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('first_name', 50);
+            $table->string('last_name', 50);
             $table->date('birth_date');
             $table->date('employment_date');
-            $table->string('home_address');
+            $table->string('home_address', 100);
             $table->bigInteger('boss_id')->unsigned()->nullable();
             $table->enum('role', [
                 'ceo',

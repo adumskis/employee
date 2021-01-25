@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Services\CustomValidations;
+namespace Bundles\EmployeeBundle\CustomValidations;
 
-use App\Models\Role;
+use Bundles\EmployeeBundle\Models\Role;
 use App\Services\RequestValidations\CustomValidation;
 use App\Services\RequestValidations\CustomValidationException;
 use Illuminate\Http\Request;
 
 /**
  * Class CEODontHaveBoseValidation
- * @package App\Services\CustomValidations
+ * @package Bundles\EmployeeBundle\CustomValidations
  */
 class CEODontHaveBoseValidation implements CustomValidation
 {

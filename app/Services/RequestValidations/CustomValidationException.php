@@ -6,7 +6,7 @@ use Exception;
 
 /**
  * Class CustomValidationException
- * @package App\Services\CustomValidations
+ * @package Bundles\EmployeeBundle\CustomValidations
  */
 class CustomValidationException extends Exception
 {

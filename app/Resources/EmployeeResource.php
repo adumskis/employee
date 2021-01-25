@@ -2,7 +2,7 @@
 
 namespace App\Resources;
 
-use App\Models\Employee;
+use Bundles\EmployeeBundle\Models\Employee;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 

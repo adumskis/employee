@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace Bundles\EmployeeBundle\Models;
 
 /**
  * Class Role
- * @package App\Models
+ * @package Bundles\EmployeeBundle\Models
  */
 class Role
 {

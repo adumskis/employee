@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\CustomValidations;
+namespace Bundles\EmployeeBundle\CustomValidations;
 
 use App\Services\RequestValidations\CustomValidation;
 use App\Services\RequestValidations\CustomValidationException;
@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 /**
  * Class EmploymentDateIsNotFutureValidation
- * @package App\Services\CustomValidations
+ * @package Bundles\EmployeeBundle\CustomValidations
  */
 class EmploymentDateIsNotFutureValidation implements CustomValidation
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Bundles\EmployeeBundle\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Employee
- * @package App\Models
+ * @package Bundles\EmployeeBundle\Models
  * @property int $id
  * @property string $first_name
  * @property string $last_name

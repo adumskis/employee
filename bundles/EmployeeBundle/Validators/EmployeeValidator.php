@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Validators;
+namespace Bundles\EmployeeBundle\Validators;
 
 use App\Services\RequestValidations\AbstractValidator;
 use Illuminate\Http\Request;
 
 /**
- * Class StoreValidator
- * @package App\Http\Validators\Employee
+ * Class EmployeeValidator
+ * @package Bundles\EmployeeBundle\Validators
  */
 class EmployeeValidator extends AbstractValidator
 {

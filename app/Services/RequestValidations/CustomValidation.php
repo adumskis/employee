@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 /**
  * Interface CustomValidation
- * @package App\Services\CustomValidations
+ * @package Bundles\EmployeeBundle\CustomValidations
  */
 interface CustomValidation
 {

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Bundles\EmployeeBundle\Controllers;
 
-use App\Http\Validators\EmployeeValidator;
+use Bundles\EmployeeBundle\Validators\EmployeeValidator;
 use App\Resources\EmployeeResource;
-use App\Services\RequestValidations\CustomValidationException;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Models\Employee;
+use Bundles\EmployeeBundle\Models\Employee;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\Controller;
 
 /**
  * Class EmployeesController
- * @package App\Http\Controllers
+ * @package Bundles\EmployeeBundle\Controllers
  */
 class EmployeesController extends Controller
 {
@@ -68,7 +68,6 @@ class EmployeesController extends Controller
     /**
      * @param Request $request
      * @return JsonResource
-     * @throws CustomValidationException
      * @throws ValidationException
      */
     public function store(Request $request): JsonResource
@@ -86,7 +85,6 @@ class EmployeesController extends Controller
      * @param int $id
      * @param Request $request
      * @return JsonResource
-     * @throws CustomValidationException
      * @throws ValidationException
      */
     public function update(int $id, Request $request): JsonResource

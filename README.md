@@ -11,7 +11,11 @@ will need to update local `/etc/hosts` file with static Nginx container IP addre
 
 ### Steps:
 * Add `172.26.154.2 employee.local` to the `/etc/hosts` file;
-* Run `make up`;
+* Create environment file `cp .env.example .env`;
+* Spin up containers `make up`;
+* Run migration `make artisan_migrate`;
 * Visit [employee.local](http://employee.local/) using your browser;
 * Have fun!
 
+### Other stuff:
+* To run phpunit test just use `make phpunit` command;

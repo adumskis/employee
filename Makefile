@@ -14,3 +14,12 @@ ssh:
 
 compose_install:
 	docker-compose exec php composer install
+
+artisan_migrate:
+	docker-compose exec php php artisan migrate
+
+artisan_migrate_fresh:
+	docker-compose exec php php artisan migrate:fresh
+
+phpunit:
+	docker-compose exec php vendor/bin/phpunit

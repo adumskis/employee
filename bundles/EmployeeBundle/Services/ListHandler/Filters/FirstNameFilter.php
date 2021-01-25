@@ -20,7 +20,7 @@ class FirstNameFilter implements FilterInterface
         $firstName = $bag->get('first_name');
 
         if ((string)$firstName) {
-            $query->where('first_name', 'like',  '%' . $firstName . '%');
+            $query->whereRaw('MATCH(first_name) AGAINST(? IN BOOLEAN MODE)', ['*' . $firstName . '*']);
         }
     }
 }

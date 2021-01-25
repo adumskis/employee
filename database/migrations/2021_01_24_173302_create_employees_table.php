@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -33,11 +34,15 @@ class CreateEmployeesTable extends Migration
             ]);
             $table->timestamps();
 
+            $table->index('birth_date');
+
             $table->foreign('boss_id')
                 ->references('id')
                 ->on('employees')
                 ->onDelete('cascade');
         });
+
+        DB::statement('ALTER TABLE `employees` ADD FULLTEXT INDEX first_name_index (first_name)');
     }
 
     /**
